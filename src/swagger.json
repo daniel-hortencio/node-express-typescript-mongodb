@@ -1,0 +1,334 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Next Typescript MongoDB Api Documentation",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/products": {
+      "get": {
+        "tags": ["Product"],
+        "summary": "Find all Products",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id_product": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "price": {
+                        "type": "number"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "brand": {
+                        "type": "string"
+                      },
+                      "categories": {
+                        "type": "array"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      }
+                    },
+                    "example": [
+                      {
+                        "id_product": "640cc97e9b801b1669539301",
+                        "name": "Guitarra Ibanez",
+                        "price": 5990.9,
+                        "description": "Guitarra Ibanez",
+                        "brand": "Ibanez",
+                        "categories": ["guitarra"],
+                        "created_at": "2023-03-11T18:31:45.491Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Product"],
+        "summary": "Create Product",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "brand": {
+                    "type": "string"
+                  },
+                  "categories": {
+                    "type": "array"
+                  }
+                },
+                "example": {
+                  "name": "Guitarra Ibanez",
+                  "price": 5990.9,
+                  "description": "Guitarra Ibanez",
+                  "brand": "Ibanez",
+                  "categories": ["guitarra"]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully Product created."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/products/{id_product}": {
+      "put": {
+        "tags": ["Product"],
+        "summary": "Update Product by Id",
+        "parameters": [
+          {
+            "name": "id_product",
+            "in": "path",
+            "description": "Product Id",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "brand": {
+                    "type": "string"
+                  },
+                  "categories": {
+                    "type": "array"
+                  }
+                },
+                "example": {
+                  "name": "Guitarra Ibanez Edited",
+                  "price": 6990.9,
+                  "description": "Guitarra Ibanez",
+                  "brand": "Ibanez",
+                  "categories": ["guitarra"],
+                  "created_at": "2023-03-11T18:31:45.491Z"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Successfully Product updated."
+          },
+          "404": {
+            "description": "Product Id not founded."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Product"],
+        "summary": "Delete Product by Id",
+        "parameters": [
+          {
+            "name": "id_product",
+            "in": "path",
+            "description": "Product Id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully Product deleted."
+          },
+          "404": {
+            "description": "Product Id not founded."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+
+    "/categories": {
+      "get": {
+        "tags": ["Categories"],
+        "summary": "Find all Categories",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id_category": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Categories"],
+        "summary": "Create Category",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Guitar",
+                  "description": "Eletric and Acoustic Guitars"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Successfully Category creted."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/categories/{id_category}": {
+      "put": {
+        "tags": ["Categories"],
+        "summary": "Update Category",
+        "parameters": [
+          {
+            "name": "id_category",
+            "in": "path",
+            "description": "Category Id",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Guitar Updated",
+                  "description": "Eletric and Acoustic Guitars Updated"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Successfully Category updated."
+          },
+          "404": {
+            "description": "Category Id not founded."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Categories"],
+        "summary": "Delete Category by Id",
+        "parameters": [
+          {
+            "name": "id_category",
+            "in": "path",
+            "description": "User Id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully Category deleted."
+          },
+          "404": {
+            "description": "Category Id not founded."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
