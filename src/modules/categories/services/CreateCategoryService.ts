@@ -10,10 +10,6 @@ export default class CreateCategoryService {
     ) { }
 
     async execute(body: ICreateCategory) {
-        try {
-            await this.categories_repository.create(body)
-        } catch (err) {
-            console.log({ err })
-        }
+        await this.categories_repository.create(body)
     }
 }

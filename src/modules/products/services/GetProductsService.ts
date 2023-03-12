@@ -9,12 +9,8 @@ export default class GetProductsService {
     ) { }
 
     async execute() {
-        try {
-            const products = await this.products_repository.find()
+        const products = await this.products_repository.find()
 
-            return products
-        } catch (err) {
-            console.log({ err })
-        }
+        return products
     }
 }

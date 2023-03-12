@@ -9,12 +9,8 @@ export default class GetCategoriesService {
     ) { }
 
     async execute() {
-        try {
-            const categories = await this.categories_repository.find()
+        const categories = await this.categories_repository.find()
 
-            return categories
-        } catch (err) {
-            console.log({ err })
-        }
+        return categories
     }
 }

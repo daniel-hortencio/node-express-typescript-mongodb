@@ -10,10 +10,6 @@ export default class CreateProductService {
     ) { }
 
     async execute(body: ICreateProduct) {
-        try {
-            await this.products_repository.create(body)
-        } catch (err) {
-            console.log({ err })
-        }
+        await this.products_repository.create(body)
     }
 }
