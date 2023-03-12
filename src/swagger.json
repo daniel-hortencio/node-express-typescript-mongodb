@@ -2,6 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Next Typescript MongoDB Api Documentation",
+    "description": "A simple example of e-commerce api for test a node/express with mongodb and swagger",
     "version": "1.0.0"
   },
   "paths": {
